@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Button, Container, Grid, Stack } from '@mui/material';
+import { Box, Typography, Button, Container, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
 import ReactTypingEffect from 'react-typing-effect';
 import DownloadIcon from '@mui/icons-material/Download';
