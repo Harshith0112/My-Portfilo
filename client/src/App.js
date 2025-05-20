@@ -33,8 +33,8 @@ function App() {
       <About />
       <Education />
       <Skills />
-      <Projects />
       <Certifications />
+      <Projects />
       <Contact />
       <Footer />
     </ThemeProvider>
