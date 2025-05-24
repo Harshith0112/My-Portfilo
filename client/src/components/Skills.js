@@ -69,7 +69,7 @@ const Skills = () => {
       title: 'Interpersonal',
       icon: <PeopleIcon sx={{ color: '#1565C0' }} />,
       color: '#1565C0',
-      skills: ['Teamwork', 'Collaboration', 'Emotional Intelligence', 'Networking']
+      skills: ['Teamwork', 'Collaboration', 'Emotional Intelligence']
     },
     communication: {
       title: 'Communication',
