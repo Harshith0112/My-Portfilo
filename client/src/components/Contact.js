@@ -11,6 +11,7 @@ const Contact = () => {
     message: ''
   });
   const [loading, setLoading] = useState(false);
+  const [showRetryNote, setShowRetryNote] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
@@ -27,7 +28,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
+
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/contact/send`, {
         method: 'POST',
@@ -46,6 +47,7 @@ const Contact = () => {
           severity: 'success'
         });
         setFormData({ name: '', email: '', message: '' });
+        setShowRetryNote(false);
       } else {
         throw new Error(data.message || 'Failed to send message');
       }
@@ -56,6 +58,10 @@ const Contact = () => {
         message: error.message || 'Failed to send message. Please try again.',
         severity: 'error'
       });
+      setShowRetryNote(true);
+      setTimeout(() => {
+        setShowRetryNote(false);
+      }, 90000); // Hide note after 90 seconds
     } finally {
       setLoading(false);
     }
@@ -66,13 +72,7 @@ const Contact = () => {
   };
 
   return (
-    <Box
-      id="contact"
-      sx={{
-        py: 8,
-        backgroundColor: 'background.default',
-      }}
-    >
+    <Box id="contact" sx={{ py: 8, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -173,11 +173,7 @@ const Contact = () => {
                 </Box>
               </Box>
 
-              <Box
-                component="form"
-                onSubmit={handleSubmit}
-                sx={{ p: 3 }}
-              >
+              <Box component="form" onSubmit={handleSubmit} sx={{ p: 3 }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <TextField
                     required
@@ -229,6 +225,16 @@ const Contact = () => {
                   >
                     {loading ? 'Sending...' : 'Send Message'}
                   </Button>
+
+                  {showRetryNote && (
+                    <Typography
+                      variant="body2"
+                      color="error"
+                      sx={{ mt: 1, textAlign: 'center' }}
+                    >
+                      Mail has not sent. Please retry after 90 seconds.
+                    </Typography>
+                  )}
                 </Box>
               </Box>
             </Box>
@@ -254,4 +260,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;
