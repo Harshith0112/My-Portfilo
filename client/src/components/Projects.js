@@ -18,18 +18,18 @@ const projects = [
     type: 'Solo Project',
     technologies: ['AWS', 'React.js', 'Node.js' , 'HTML/CSS', 'JavaScript'],
     github: '#',
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/posts/dindukurthi-harshith_serverless-aws-edtech-activity-7317742378373496832-dp9Y?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZGJr0BFkcL_-IyQfQw6z1J1Ej4IuQ89Cs',
     demo: '#'
   },
  {
   title: 'Learning Management System',
   description: 'A comprehensive platform for managing student feedback and academic insights, built using Spring Boot, MySQL, and React.',
-  image: 'https://ik.imagekit.io/dharshith/portfilo-img/libray%20management%20system.png?updatedAt=1747762237678',
+  image: 'https://ik.imagekit.io/dharshith/portfilo-img/learning%20management%20system.png?updatedAt=1747762237247',
   category: 'Java',
   type: 'Team Project',
   technologies: ['Java', 'SpringBoot', 'MySQL', 'React'],
   github: '#',
-  linkedin: '#',
+  linkedin: 'https://www.linkedin.com/posts/neerudu-pavan-kumar-64b201286_excited-to-share-our-latest-java-full-activity-7247185212269289472-GW2i?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZGJr0BFkcL_-IyQfQw6z1J1Ej4IuQ89Cs',
   demo: '#'
 },
 {
@@ -46,12 +46,12 @@ const projects = [
 {
   title: 'Library Management System',
   description: 'A MERN-based web application for student counseling, academic tracking, and digital library resource management.',
-  image: 'https://ik.imagekit.io/dharshith/portfilo-img/learning%20management%20system.png?updatedAt=1747762237247',
+  image: 'https://ik.imagekit.io/dharshith/portfilo-img/libray%20management%20system.png?updatedAt=1747762237678',
   category: 'MERN',
   type: 'Team Project',
   technologies: ['MongoDB', 'Express.js', 'React', 'Node.js'],
   github: '#',
-  linkedin: '#',
+  linkedin: 'https://www.linkedin.com/posts/dindukurthi-harshith_library-managment-system-activity-7102374256147087360-K1Ym?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZGJr0BFkcL_-IyQfQw6z1J1Ej4IuQ89Cs',
   demo: '#'
 },
 {
@@ -349,50 +349,169 @@ const Projects = () => {
                           justifyContent: { xs: 'center', sm: 'space-between' },
                         }}
                       >
-                        <Button
-                          variant="outlined"
-                          size="small"
-                          startIcon={<GitHubIcon />}
-                          href={project.github}
-                          target="_blank"
-                        >
-                          Code
-                        </Button>
-                        <Button
-                          variant="outlined"
-                          size="small"
-                          startIcon={<LinkedInIcon />}
-                          href={project.linkedin}
-                          target="_blank"
-                          sx={{
-                            color: '#0077b5',
-                            borderColor: 'rgba(0, 119, 181, 0.2)',
-                            bgcolor: 'rgba(0, 119, 181, 0.05)',
-                            '&:hover': {
-                              bgcolor: 'rgba(0, 119, 181, 0.1)',
-                              borderColor: 'rgba(0, 119, 181, 0.3)',
-                            },
-                          }}
-                        >
-                          LinkedIn
-                        </Button>
-                        <Button
-                          variant="contained"
-                          size="small"
-                          startIcon={<LaunchIcon />}
-                          href={project.demo}
-                          target="_blank"
-                          sx={{
-                            background:
-                              'linear-gradient(to right, #00e5a0, #00e5a0)',
-                            '&:hover': {
+                        <Box sx={{ position: 'relative' }}>
+                          <Button
+                            variant="outlined"
+                            size="small"
+                            startIcon={<GitHubIcon />}
+                            href={project.github !== '#' ? project.github : undefined}
+                            target="_blank"
+                            disabled={project.github === '#'}
+                            sx={{
+                              position: 'relative',
+                              '&:disabled': {
+                                opacity: 0.7,
+                              },
+                            }}
+                          >
+                            Code
+                          </Button>
+                          {project.github === '#' && (
+                            <Box
+                              sx={{
+                                position: 'absolute',
+                                top: '-30px',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                color: 'white',
+                                padding: '4px 8px',
+                                borderRadius: '4px',
+                                fontSize: '0.75rem',
+                                whiteSpace: 'nowrap',
+                                opacity: 0,
+                                transition: 'opacity 0.2s',
+                                pointerEvents: 'none',
+                                '&::after': {
+                                  content: '""',
+                                  position: 'absolute',
+                                  bottom: '-5px',
+                                  left: '50%',
+                                  transform: 'translateX(-50%)',
+                                  borderWidth: '5px',
+                                  borderStyle: 'solid',
+                                  borderColor: 'rgba(0, 0, 0, 0.8) transparent transparent transparent',
+                                },
+                              }}
+                              className="tooltip"
+                            >
+                              Not Available
+                            </Box>
+                          )}
+                        </Box>
+
+                        <Box sx={{ position: 'relative' }}>
+                          <Button
+                            variant="outlined"
+                            size="small"
+                            startIcon={<LinkedInIcon />}
+                            href={project.linkedin !== '#' ? project.linkedin : undefined}
+                            target="_blank"
+                            disabled={project.linkedin === '#'}
+                            sx={{
+                              color: '#0077b5',
+                              borderColor: 'rgba(0, 119, 181, 0.2)',
+                              bgcolor: 'rgba(0, 119, 181, 0.05)',
+                              '&:hover': {
+                                bgcolor: 'rgba(0, 119, 181, 0.1)',
+                                borderColor: 'rgba(0, 119, 181, 0.3)',
+                              },
+                              '&:disabled': {
+                                opacity: 0.7,
+                              },
+                            }}
+                          >
+                            LinkedIn
+                          </Button>
+                          {project.linkedin === '#' && (
+                            <Box
+                              sx={{
+                                position: 'absolute',
+                                top: '-30px',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                color: 'white',
+                                padding: '4px 8px',
+                                borderRadius: '4px',
+                                fontSize: '0.75rem',
+                                whiteSpace: 'nowrap',
+                                opacity: 0,
+                                transition: 'opacity 0.2s',
+                                pointerEvents: 'none',
+                                '&::after': {
+                                  content: '""',
+                                  position: 'absolute',
+                                  bottom: '-5px',
+                                  left: '50%',
+                                  transform: 'translateX(-50%)',
+                                  borderWidth: '5px',
+                                  borderStyle: 'solid',
+                                  borderColor: 'rgba(0, 0, 0, 0.8) transparent transparent transparent',
+                                },
+                              }}
+                              className="tooltip"
+                            >
+                              Not Available
+                            </Box>
+                          )}
+                        </Box>
+
+                        <Box sx={{ position: 'relative' }}>
+                          <Button
+                            variant="contained"
+                            size="small"
+                            startIcon={<LaunchIcon />}
+                            href={project.demo !== '#' ? project.demo : undefined}
+                            target="_blank"
+                            disabled={project.demo === '#'}
+                            sx={{
                               background:
-                                'linear-gradient(to right, rgba(0, 229, 160, 0.9), rgba(0, 229, 160, 0.9))',
-                            },
-                          }}
-                        >
-                          Demo
-                        </Button>
+                                'linear-gradient(to right, #00e5a0, #00e5a0)',
+                              '&:hover': {
+                                background:
+                                  'linear-gradient(to right, rgba(0, 229, 160, 0.9), rgba(0, 229, 160, 0.9))',
+                              },
+                              '&:disabled': {
+                                opacity: 0.7,
+                              },
+                            }}
+                          >
+                            Demo
+                          </Button>
+                          {project.demo === '#' && (
+                            <Box
+                              sx={{
+                                position: 'absolute',
+                                top: '-30px',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                color: 'white',
+                                padding: '4px 8px',
+                                borderRadius: '4px',
+                                fontSize: '0.75rem',
+                                whiteSpace: 'nowrap',
+                                opacity: 0,
+                                transition: 'opacity 0.2s',
+                                pointerEvents: 'none',
+                                '&::after': {
+                                  content: '""',
+                                  position: 'absolute',
+                                  bottom: '-5px',
+                                  left: '50%',
+                                  transform: 'translateX(-50%)',
+                                  borderWidth: '5px',
+                                  borderStyle: 'solid',
+                                  borderColor: 'rgba(0, 0, 0, 0.8) transparent transparent transparent',
+                                },
+                              }}
+                              className="tooltip"
+                            >
+                              Not Available
+                            </Box>
+                          )}
+                        </Box>
                       </Box>
                     </Box>
                   </Paper>
@@ -402,6 +521,17 @@ const Projects = () => {
           </Grid>
         </motion.div>
       </Container>
+
+      <style>
+        {`
+          .tooltip {
+            opacity: 0;
+          }
+          button:disabled:hover + .tooltip {
+            opacity: 1;
+          }
+        `}
+      </style>
     </Box>
   );
 };

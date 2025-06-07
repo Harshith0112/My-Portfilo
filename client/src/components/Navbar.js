@@ -65,20 +65,45 @@ const Navbar = ({ darkMode, toggleTheme }) => {
         color: darkMode ? 'inherit' : '#000000',
       }}
     >
-      <Toolbar>
-        <Typography 
-          variant="h6" 
-          component="div" 
-          sx={{ 
-            flexGrow: 1,
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <ScrollLink
+          to="hero"
+          smooth={true}
+          duration={800}
+          offset={-100}
+          spy={true}
+          style={{ 
+            textDecoration: 'none', 
             color: 'inherit',
-            fontWeight: 'bold',
-            fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }
+            cursor: 'pointer',
           }}
         >
-          DINDUKURTHI HARSHITH
-        </Typography>
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
+          <Typography 
+            variant="h6" 
+            component="div" 
+            sx={{ 
+              color: 'inherit',
+              fontWeight: 'bold',
+              fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                color: theme.palette.mode === 'dark' ? '#90caf9' : '#1976d2',
+                transform: 'scale(1.05)',
+              },
+            }}
+          >
+            DINDUKURTHI HARSHITH
+          </Typography>
+        </ScrollLink>
+
+        <Box sx={{ 
+          display: { xs: 'none', md: 'flex' }, 
+          alignItems: 'center', 
+          gap: 2,
+          marginLeft: 'auto',
+          marginRight: 4
+        }}>
           {sections.map((section) => (
             <ScrollLink
               key={section.id}
@@ -101,6 +126,9 @@ const Navbar = ({ darkMode, toggleTheme }) => {
               </Button>
             </ScrollLink>
           ))}
+        </Box>
+
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <IconButton 
             onClick={toggleTheme} 
             sx={{ 
@@ -112,16 +140,17 @@ const Navbar = ({ darkMode, toggleTheme }) => {
           >
             {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
+
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="end"
+            onClick={handleDrawerToggle}
+            sx={{ display: { md: 'none' }, ml: 1 }}
+          >
+            <MenuIcon />
+          </IconButton>
         </Box>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="end"
-          onClick={handleDrawerToggle}
-          sx={{ display: { md: 'none' } }}
-        >
-          <MenuIcon />
-        </IconButton>
       </Toolbar>
       <Drawer
         variant="temporary"
