@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 const sections = [
   { name: 'About', id: 'about' },
   { name: 'Education', id: 'education' },
+  //{ name: 'Experience', id: 'experience' },
   { name: 'Skills', id: 'skills' },
   { name: 'Certifications', id: 'certifications' },
   { name: 'Projects', id: 'projects' },

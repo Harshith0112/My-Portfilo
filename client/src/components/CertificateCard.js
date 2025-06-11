@@ -39,16 +39,18 @@ const CertificateCard = ({ certificate, index }) => {
             },
           }}
         >
-          <CardContent sx={{ p: 0 }}>
+          <CardContent sx={{ p: 0, flex: 1, display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ 
               p: 3, 
               display: 'flex', 
               alignItems: 'center', 
               gap: 2,
               borderBottom: '1px solid',
-              borderColor: 'divider'
+              borderColor: 'divider',
+              minHeight: '100px'
             }}>
               <Box sx={{
+                minWidth: 48,
                 width: 48,
                 height: 48,
                 borderRadius: '50%',
@@ -56,23 +58,25 @@ const CertificateCard = ({ certificate, index }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'primary.main'
+                color: 'primary.main',
+                flexShrink: 0
               }}>
-                <AwardIcon />
+                <AwardIcon sx={{ fontSize: 28 }} />
               </Box>
               <Typography 
                 variant="h6" 
                 sx={{ 
                   fontWeight: 600,
                   fontSize: '1.1rem',
-                  lineHeight: 1.3
+                  lineHeight: 1.3,
+                  flex: 1
                 }}
               >
                 {certificate.name}
               </Typography>
             </Box>
 
-            <Box sx={{ p: 3 }}>
+            <Box sx={{ p: 3, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <Box sx={{ 
                 display: 'flex', 
                 justifyContent: 'space-between',
@@ -115,7 +119,6 @@ const CertificateCard = ({ certificate, index }) => {
                   alignItems: 'center',
                   color: 'primary.main',
                   cursor: 'pointer',
-                  mt: 2,
                   '&:hover': {
                     color: 'primary.dark',
                   },
@@ -135,6 +138,7 @@ const CertificateCard = ({ certificate, index }) => {
         open={isModalOpen}
         onClose={handleCloseModal}
         image={certificate.image}
+        credlyUrl={certificate.credlyUrl}
       />
     </>
   );

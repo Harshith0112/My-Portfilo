@@ -1,8 +1,15 @@
 import React from 'react';
-import { Modal, Box, IconButton } from '@mui/material';
+import { Modal, Box, IconButton, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import VerifiedIcon from '@mui/icons-material/Verified';
 
-const CertificateModal = ({ open, onClose, image }) => {
+const CertificateModal = ({ open, onClose, image, credlyUrl }) => {
+  const handleVerify = () => {
+    if (credlyUrl) {
+      window.open(credlyUrl, '_blank');
+    }
+  };
+
   return (
     <Modal
       open={open}
@@ -37,21 +44,46 @@ const CertificateModal = ({ open, onClose, image }) => {
             '&:hover': {
               bgcolor: 'rgba(0, 0, 0, 0.7)',
             },
+            zIndex: 2,
           }}
         >
           <CloseIcon />
         </IconButton>
-        <Box
-          component="img"
-          src={image}
-          alt="Certificate"
-          sx={{
-            width: '100%',
-            height: 'auto',
-            maxHeight: '85vh',
-            objectFit: 'contain',
-          }}
-        />
+
+        <Box sx={{ position: 'relative' }}>
+          <Box
+            component="img"
+            src={image}
+            alt="Certificate"
+            sx={{
+              width: '100%',
+              height: 'auto',
+              maxHeight: '85vh',
+              objectFit: 'contain',
+            }}
+          />
+          
+          {credlyUrl && (
+            <Button
+              variant="contained"
+              startIcon={<VerifiedIcon />}
+              onClick={handleVerify}
+              sx={{
+                position: 'absolute',
+                bottom: 16,
+                right: 16,
+                bgcolor: 'success.main',
+                color: 'white',
+                '&:hover': {
+                  bgcolor: 'success.dark',
+                },
+                zIndex: 2,
+              }}
+            >
+              Verify
+            </Button>
+          )}
+        </Box>
       </Box>
     </Modal>
   );

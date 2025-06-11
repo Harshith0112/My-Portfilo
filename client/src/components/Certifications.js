@@ -8,6 +8,7 @@ import CertificateCard from './CertificateCard';
 import oracleCert from '../assets/certificates/oraclegenai.png';
 import redhatCert from '../assets/certificates/redhat.png';
 import salesforceCert from '../assets/certificates/salesforce_AIAssociate.png';
+import googleCert from '../assets/certificates/google_ace.png';
 
 const certifications = [
   // {
@@ -22,21 +23,32 @@ const certifications = [
     issuer: 'Oracle',
     date: '2024',
     image: oracleCert,
-    link: '#'
+    link: '#',
+    credlyUrl: ''
   },
   {
     name: 'Red Hat Certified Enterprise Application Developer',
     issuer: 'RedHat',
-    date: '2024',
+    date: '2025',
     image: redhatCert,
-    link: '#'
+    link: '#',
+    credlyUrl: 'https://www.credly.com/badges/0ad2bca6-0cd3-4724-8d36-6546c1f31003/public_url'
   },
   {
     name: 'Salesforce Al Associate',
     issuer: 'Salesforce',
     date: '2024',
     image: salesforceCert,
-    link: '#'
+    link: '#',
+    credlyUrl: 'https://www.salesforce.com/trailblazer/k9726mq9y8z15o2ocg'
+  },
+  {
+    name: 'Google Cloud Certified Associate Cloud Engineer',
+    issuer: 'Google',
+    date: '2025',
+    image: googleCert,
+    link: '#',
+    credlyUrl: 'https://www.credly.com/badges/e2e2b1c4-ddec-4ced-8da2-b74150689dc3/public_url'
   }
 ];
 
