@@ -16,6 +16,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import AnimatedBackground from './AnimatedBackground';
+import { useTheme } from '@mui/material/styles';
 
 const roles = [
   'Computer Science Engineer',
@@ -29,6 +30,7 @@ const roles = [
 
 const Hero = () => {
   const [openDialog, setOpenDialog] = useState(false);
+  const theme = useTheme();
 
   const handleDownloadClick = () => {
     setOpenDialog(true);
@@ -49,18 +51,23 @@ const Hero = () => {
 
   return (
     <Box
-      id="hero"
       sx={{
-        position: 'relative',
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
+        position: 'relative',
         overflow: 'hidden',
         pt: { xs: 8, md: 0 },
       }}
     >
       <AnimatedBackground />
-      <Container maxWidth="lg">
+      <Container 
+        maxWidth="lg" 
+        sx={{ 
+          position: 'relative',
+          zIndex: 2,
+        }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,6 +86,7 @@ const Hero = () => {
               textFillColor: 'transparent',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
+              color: theme.palette.mode === 'dark' ? 'text.primary' : '#1a1a1a',
             }}
           >
             HARSHITH DINDUKURTHI
@@ -88,7 +96,7 @@ const Hero = () => {
             variant="h4"
             sx={{
               mb: 4,
-              color: '#aaa',
+              color: theme.palette.mode === 'dark' ? 'text.secondary' : '#4a4a4a',
               fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
               textAlign: { xs: 'center', md: 'left' },
             }}
@@ -96,20 +104,17 @@ const Hero = () => {
             I am{' '}
             <ReactTypingEffect
               text={roles}
-              speed={100}
+              speed={90}
               eraseDelay={2000}
-              typingDelay={500}
-              eraseSpeed={50}
-              cursorRenderer={(cursor) => (
-                <span style={{ color: '#1976d2' }}>{cursor}</span>
-              )}
+              typingDelay={1000}
+              eraseSpeed={30}
               displayTextRenderer={(text) => (
                 <span>
                   {text.split('').map((char, i) => (
                     <span
                       key={i}
                       style={{
-                        color: i % 2 === 0 ? '#1976d2' : '#9c27b0',
+                        color: i % 2 === 0 ? 'rgb(25, 118, 210)' : 'rgb(156, 39, 176)',
                         fontWeight: 'bold',
                       }}
                     >
@@ -118,8 +123,13 @@ const Hero = () => {
                   ))}
                 </span>
               )}
+              cursorRenderer={(cursor) => (
+                <span style={{ color: 'rgb(156, 39, 176)' }}>{cursor}</span>
+              )}
             />
           </Typography>
+
+          
 
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -202,6 +212,52 @@ const Hero = () => {
           </Stack>
         </motion.div>
       </Container>
+
+      {/* Scroll Down Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        style={{
+          position: 'absolute',
+          bottom: '40px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 2,
+        }}
+      >
+        <motion.div
+          animate={{
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: 'loop',
+          }}
+        >
+          <Box
+            sx={{
+              width: '30px',
+              height: '50px',
+              border: `2px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)'}`,
+              borderRadius: '15px',
+              position: 'relative',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: '8px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '6px',
+                height: '6px',
+                backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
+                borderRadius: '50%',
+              },
+            }}
+          />
+        </motion.div>
+      </motion.div>
 
       {/* Modal Dialog */}
       <Dialog open={openDialog} onClose={handleCloseDialog} maxWidth="xs" fullWidth>

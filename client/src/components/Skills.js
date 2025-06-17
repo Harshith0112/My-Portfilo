@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
-import { Box, Typography, Container, Grid, Paper, Button, useTheme, Card, CardContent, IconButton, Chip } from '@mui/material';
+import { Box, Typography, Container, Grid, Button, useTheme, Card, CardContent} from '@mui/material';
 import { motion } from 'framer-motion';
 import CodeIcon from '@mui/icons-material/Code';
 import PeopleIcon from '@mui/icons-material/People';
-import LayersIcon from '@mui/icons-material/Layers';
 import CloudIcon from '@mui/icons-material/Cloud';
 import GlobeIcon from '@mui/icons-material/Public';
-import BarChartIcon from '@mui/icons-material/BarChart';
 import StorageIcon from '@mui/icons-material/Storage';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import GroupsIcon from '@mui/icons-material/Groups';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import TimerIcon from '@mui/icons-material/Timer';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import SkillsVisualization from './SkillsVisualization';
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState('technical');
@@ -22,178 +18,192 @@ const Skills = () => {
   const skillCategories = {
     languages: {
       title: 'Languages',
-      icon: <CodeIcon sx={{ color: theme.palette.mode === 'dark' ? '#81c784' : '#2E7D32' }} />,
-      color: theme.palette.mode === 'dark' ? '#81c784' : '#2E7D32',
-      skills: ['C', 'Java', 'JavaScript', 'Python']
+      icon: <CodeIcon />,
+      color: '#2563eb',
+      skills: [
+        { name: 'C', icon: '⚡' },
+        { name: 'Java', icon: '☕' },
+        { name: 'JavaScript', icon: '📜' },
+        { name: 'Python', icon: '🐍' },
+      ],
     },
-    web: {
-      title: 'Web',
-      icon: <GlobeIcon sx={{ color: theme.palette.mode === 'dark' ? '#64b5f6' : '#1565C0' }} />,
-      color: theme.palette.mode === 'dark' ? '#64b5f6' : '#1565C0',
-      skills: ['CSS', 'HTML', 'React', 'Node.js']
+    frontend: {
+      title: 'Frontend',
+      icon: <GlobeIcon />,
+      color: '#7c3aed',
+      skills: [
+        { name: 'React', icon: '⚛️' },
+        { name: 'HTML5', icon: '🌐' },
+        { name: 'CSS3', icon: '🎨' },
+        { name: 'Material-UI', icon: '🎯' },
+      ],
     },
-    frameworks: {
-      title: 'Frameworks',
-      icon: <LayersIcon sx={{ color: theme.palette.mode === 'dark' ? '#ffb74d' : '#E65100' }} />,
-      color: theme.palette.mode === 'dark' ? '#ffb74d' : '#E65100',
-      skills: ['Django', 'Spring Boot', 'ReactJS']
+    backend: {
+      title: 'Backend',
+      icon: <StorageIcon />,
+      color: '#db2777',
+      skills: [
+        { name: 'Node.js', icon: '🟢' },
+        { name: 'Django', icon: <img src="https://cdn.iconscout.com/icon/free/png-512/free-django-logo-icon-download-in-svg-png-gif-file-formats--technology-social-media-company-vol-2-pack-logos-icons-2970205.png?f=webp&w=512" alt="Django" style={{ width: '1em', height: '1em', verticalAlign: 'middle', objectFit: 'contain' }} /> },
+        { name: 'Express.js', icon: '🚂' },
+      ],
     },
     databases: {
       title: 'Databases',
-      icon: <StorageIcon sx={{ color: theme.palette.mode === 'dark' ? '#ef9a9a' : '#C62828' }} />,
-      color: theme.palette.mode === 'dark' ? '#ef9a9a' : '#C62828',
-      skills: ['MongoDB', 'MySQL', 'PostgreSQL']
+      icon: <StorageIcon sx={{ color: '#059669' }} />,
+      color: '#059669',
+      skills: [
+        { name: 'MongoDB', icon: '🍃' },
+        { name: 'MySQL', icon: '🐬' },
+        { name: 'PostgreSQL', icon: '🐘' }
+      ]
     },
     cloud: {
-      title: 'Cloud Computing',
-      icon: <CloudIcon sx={{ color: theme.palette.mode === 'dark' ? '#4dd0e1' : '#006064' }} />,
-      color: theme.palette.mode === 'dark' ? '#4dd0e1' : '#006064',
-      skills: ['AWS', 'Google Cloud', 'Docker']
+      title: 'Cloud & AI',
+      icon: <CloudIcon sx={{ color: '#ea580c' }} />,
+      color: '#ea580c',
+      skills: [
+        { name: 'AWS', icon: '☁️' },
+        { name: 'Google Cloud', icon: '🌩️' },
+        { name: 'Docker', icon: '🐳' }
+      ]
     }
   };
 
   const softSkillCategories = {
     productivity: {
       title: 'Productivity',
-      icon: <TimerIcon sx={{ color: theme.palette.mode === 'dark' ? '#81c784' : '#2E7D32' }} />,
-      color: theme.palette.mode === 'dark' ? '#81c784' : '#2E7D32',
-      skills: ['Time Management', 'Organization', 'Multitasking', 'Prioritization']
+      icon: <TimerIcon sx={{ color: '#2563eb' }} />,
+      color: '#2563eb',
+      skills: [
+        { name: 'Time Management', icon: '⏰' },
+        { name: 'Organization', icon: '📋' },
+        { name: 'Multitasking', icon: '🔄' }
+      ]
     },
     interpersonal: {
       title: 'Interpersonal',
-      icon: <PeopleIcon sx={{ color: theme.palette.mode === 'dark' ? '#64b5f6' : '#1565C0' }} />,
-      color: theme.palette.mode === 'dark' ? '#64b5f6' : '#1565C0',
-      skills: ['Teamwork', 'Collaboration', 'Emotional Intelligence']
+      icon: <PeopleIcon sx={{ color: '#7c3aed' }} />,
+      color: '#7c3aed',
+      skills: [
+        { name: 'Teamwork', icon: '👥' },
+        { name: 'Collaboration', icon: '🤝' },
+        { name: 'Emotional Intelligence', icon: '❤️' }
+      ]
     },
     communication: {
       title: 'Communication',
-      icon: <LightbulbIcon sx={{ color: theme.palette.mode === 'dark' ? '#ce93d8' : '#6A1B9A' }} />,
-      color: theme.palette.mode === 'dark' ? '#ce93d8' : '#6A1B9A',
-      skills: ['Active Listening', 'Verbal Communication', 'Written Communication', 'Presentation']
+      icon: <LightbulbIcon sx={{ color: '#db2777' }} />,
+      color: '#db2777',
+      skills: [
+        { name: 'Active Listening', icon: '👂' },
+        { name: 'Verbal Communication', icon: '🗣️' },
+        { name: 'Written Communication', icon: '✍️' }
+      ]
     },
     leadership: {
       title: 'Leadership',
-      icon: <GroupsIcon sx={{ color: theme.palette.mode === 'dark' ? '#ffb74d' : '#E65100' }} />,
-      color: theme.palette.mode === 'dark' ? '#ffb74d' : '#E65100',
-      skills: ['Team Management', 'Decision Making', 'Conflict Resolution', 'Mentoring']
+      icon: <GroupsIcon sx={{ color: '#059669' }} />,
+      color: '#059669',
+      skills: [
+        { name: 'Team Management', icon: '👨‍💼' },
+        { name: 'Decision Making', icon: '🎯' },
+        { name: 'Conflict Resolution', icon: '🤝' }
+      ]
     },
     cognitive: {
       title: 'Cognitive',
-      icon: <PsychologyIcon sx={{ color: theme.palette.mode === 'dark' ? '#ef9a9a' : '#C62828' }} />,
-      color: theme.palette.mode === 'dark' ? '#ef9a9a' : '#C62828',
-      skills: ['Critical Thinking', 'Problem Solving', 'Analytical Skills', 'Creativity']
-    },
-    adaptability: {
-      title: 'Adaptability',
-      icon: <AutoAwesomeIcon sx={{ color: theme.palette.mode === 'dark' ? '#4dd0e1' : '#006064' }} />,
-      color: theme.palette.mode === 'dark' ? '#4dd0e1' : '#006064',
-      skills: ['Flexibility', 'Learning Agility', 'Resilience', 'Innovation']
+      icon: <PsychologyIcon sx={{ color: '#ea580c' }} />,
+      color: '#ea580c',
+      skills: [
+        { name: 'Critical Thinking', icon: '🧠' },
+        { name: 'Problem Solving', icon: '🔍' },
+        { name: 'Analytical Skills', icon: '📊' }
+      ]
     }
   };
 
-  const SkillChip = ({ skill, color }) => (
+  const SkillCard = ({ category }) => (
     <motion.div
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-    >
-      <Chip
-        label={skill}
-        sx={{
-          m: 0.5,
-          px: 1,
-          height: '28px',
-          bgcolor: theme.palette.mode === 'dark' ? `${color}15` : `${color}10`,
-          color: color,
-          fontWeight: 500,
-          fontSize: '0.875rem',
-          '&:hover': {
-            bgcolor: theme.palette.mode === 'dark' ? `${color}25` : `${color}15`,
-          },
-          transition: 'all 0.2s ease',
-        }}
-      />
-    </motion.div>
-  );
-
-  const SkillBar = ({ name, level }) => (
-    <Box sx={{ mb: 3 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-        <Typography variant="body2" sx={{ fontWeight: 500 }}>{name}</Typography>
-        <Typography variant="body2" sx={{ fontWeight: 500 }}>{level}%</Typography>
-      </Box>
-      <Box
-        sx={{
-          height: 8,
-          bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
-          borderRadius: 4,
-          overflow: 'hidden',
-        }}
-      >
-        <Box
-          sx={{
-            height: '100%',
-            width: `${level}%`,
-            background: theme.palette.mode === 'dark' 
-              ? 'linear-gradient(to right, #7c4dff, #b388ff)'
-              : 'linear-gradient(to right, #6366f1, #8b5cf6)',
-            borderRadius: 4,
-          }}
-        />
-      </Box>
-    </Box>
-  );
-
-  const SkillCategory = ({ category }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
     >
-      <Box
+      <Card
         sx={{
-          mb: 3,
-          p: 2.5,
+          height: '100%',
           borderRadius: '12px',
-          bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.02)',
-          position: 'relative',
+          borderLeft: `4px solid ${category.color}`,
+          transition: 'all 0.3s ease',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
           '&:hover': {
-            bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)',
+            transform: 'translateY(-8px)',
+            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.15)',
           },
-          transition: 'all 0.2s ease',
+          bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'white',
         }}
       >
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <Box
-            sx={{
-              width: 40,
-              height: 40,
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              bgcolor: theme.palette.mode === 'dark' ? `${category.color}15` : `${category.color}10`,
-              mr: 2,
-            }}
-          >
-            {React.cloneElement(category.icon, { sx: { color: category.color, fontSize: 24 } })}
+        <CardContent sx={{ p: 3 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+            <Box
+              sx={{
+                p: 1.5,
+                borderRadius: '8px',
+                bgcolor: `${category.color}15`,
+                mr: 2,
+                boxShadow: `0 2px 8px ${category.color}20`,
+              }}
+            >
+              {React.cloneElement(category.icon, { sx: { color: category.color, fontSize: 24 } })}
+            </Box>
+            <Typography
+              variant="h6"
+              sx={{
+                color: category.color,
+                fontWeight: 600,
+              }}
+            >
+              {category.title}
+            </Typography>
           </Box>
-          <Typography
-            variant="subtitle1"
-            sx={{
-              color: category.color,
-              fontWeight: 600,
-            }}
-          >
-            {category.title}
-          </Typography>
-        </Box>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-          {category.skills.map((skill) => (
-            <SkillChip key={skill} skill={skill} color={category.color} />
-          ))}
-        </Box>
-      </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+            {category.skills.map((skill) => (
+              <motion.div
+                key={skill.name}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    p: 1.5,
+                    borderRadius: '8px',
+                    bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
+                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}`,
+                    transition: 'all 0.2s ease',
+                    '&:hover': {
+                      bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
+                      transform: 'translateX(8px)',
+                    },
+                  }}
+                >
+                  <Typography sx={{ mr: 1, fontSize: '1.2rem' }}>{skill.icon}</Typography>
+                  <Typography
+                    sx={{
+                      color: theme.palette.mode === 'dark' ? 'text.primary' : '#2c2c2c',
+                      fontWeight: 500,
+                    }}
+                  >
+                    {skill.name}
+                  </Typography>
+                </Box>
+              </motion.div>
+            ))}
+          </Box>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 
@@ -221,18 +231,18 @@ const Skills = () => {
                 color: theme.palette.mode === 'dark' ? 'text.primary' : '#1a1a1a',
               }}
             >
-              My Skills
+              Skills & Technologies
             </Typography>
             <Typography
               variant="subtitle1"
               sx={{
-                color: 'text.secondary',
+                color: theme.palette.mode === 'dark' ? 'text.secondary' : '#4a4a4a',
                 maxWidth: '600px',
                 mx: 'auto',
                 lineHeight: 1.6,
               }}
             >
-              A showcase of my technical expertise and professional capabilities
+              Tools and technologies I work with
             </Typography>
           </Box>
 
@@ -297,108 +307,66 @@ const Skills = () => {
             </Box>
           </Box>
 
+          {activeTab === 'technical' && (
+            <Box sx={{ mb: 6, textAlign: 'center' }}>
+              <Typography
+                variant="h5"
+                sx={{
+                  mb: 3,
+                  color: theme.palette.mode === 'dark' ? 'text.primary' : '#1a1a1a',
+                  fontWeight: 600,
+                }}
+              >
+                Technical Expertise
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : '#4a4a4a',
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
+                  maxWidth: '800px',
+                  mx: 'auto',
+                }}
+              >
+                Experienced in front-end development with expertise in C, Java, JavaScript, and Python. Proficient in modern web technologies including React and Node.js, with strong database skills in MongoDB, MySQL, and PostgreSQL. Skilled in cloud platforms like AWS and Google Cloud, with practical experience in containerization using Docker.
+              </Typography>
+            </Box>
+          )}
+
+          {activeTab === 'soft' && (
+            <Box sx={{ mb: 6, textAlign: 'center' }}>
+              <Typography
+                variant="h5"
+                sx={{
+                  mb: 3,
+                  color: theme.palette.mode === 'dark' ? 'text.primary' : '#1a1a1a',
+                  fontWeight: 600,
+                }}
+              >
+                Professional Skills
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : '#4a4a4a',
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
+                  maxWidth: '800px',
+                  mx: 'auto',
+                }}
+              >
+                Demonstrated excellence in time management and organization, with strong interpersonal skills in teamwork and collaboration. Effective communicator with proven leadership abilities in team management and decision-making. Possesses strong analytical thinking and problem-solving capabilities, coupled with adaptability and innovation in dynamic work environments.
+              </Typography>
+            </Box>
+          )}
+
           <Grid container spacing={4}>
-            <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  p: 3,
-                  height: '100%',
-                  borderRadius: '12px',
-                  bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.02)' : 'white',
-                }}
-              >
-                {activeTab === 'technical' ? (
-                  <>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        mb: 3,
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: theme.palette.mode === 'dark' ? 'text.primary' : '#1a1a1a',
-                        fontWeight: 600,
-                      }}
-                    >
-                      <LayersIcon sx={{ mr: 2, color: '#2196F3' }} />
-                      Technical Expertise
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        mb: 4,
-                        color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.8)',
-                        lineHeight: 1.8,
-                        fontSize: '1.1rem',
-                        background: theme.palette.mode === 'dark'
-                          ? 'linear-gradient(120deg, #64b5f6, #81c784)'
-                          : 'linear-gradient(120deg, #1565C0, #2E7D32)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        fontWeight: 500,
-                      }}
-                    >
-                      Experienced in front-end development with expertise in C, Java, JavaScript, and Python. Proficient in modern web technologies including React and Node.js, with strong database skills in MongoDB, MySQL, and PostgreSQL. Skilled in cloud platforms like AWS and Google Cloud, with practical experience in containerization using Docker.
-                    </Typography>
-                    {Object.values(skillCategories).map((category) => (
-                      <SkillCategory key={category.title} category={category} />
-                    ))}
-                  </>
-                ) : (
-                  <>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        mb: 3,
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: theme.palette.mode === 'dark' ? 'text.primary' : '#1a1a1a',
-                        fontWeight: 600,
-                      }}
-                    >
-                      <PeopleIcon sx={{ mr: 2, color: '#9C27B0' }} />
-                      Professional Skills
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        mb: 4,
-                        color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.8)',
-                        lineHeight: 1.8,
-                        fontSize: '1.1rem',
-                        background: theme.palette.mode === 'dark'
-                          ? 'linear-gradient(120deg, #ce93d8, #ffb74d)'
-                          : 'linear-gradient(120deg, #6A1B9A, #E65100)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        fontWeight: 500,
-                      }}
-                    >
-                      Demonstrated excellence in time management and organization, with strong interpersonal skills in teamwork and collaboration. Effective communicator with proven leadership abilities in team management and decision-making. Possesses strong analytical thinking and problem-solving capabilities, coupled with adaptability and innovation in dynamic work environments.
-                    </Typography>
-                    {Object.values(softSkillCategories).map((category) => (
-                      <SkillCategory key={category.title} category={category} />
-                    ))}
-                  </>
-                )}
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  height: '100%',
-                  display: { xs: 'none', md: 'block' },
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.02)' : 'white',
-                }}
-              >
-                <SkillsVisualization
-                  activeTab={activeTab}
-                  skillCategories={activeTab === 'technical' ? skillCategories : softSkillCategories}
-                />
-              </Box>
-            </Grid>
+            {Object.values(activeTab === 'technical' ? skillCategories : softSkillCategories).map((category) => (
+              <Grid item xs={12} sm={6} md={4} key={category.title}>
+                <SkillCard category={category} />
+              </Grid>
+            ))}
           </Grid>
         </motion.div>
       </Container>

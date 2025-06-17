@@ -18,8 +18,8 @@ export const lightTheme = createTheme({
       paper: '#f5f5f5',
     },
     text: {
-      primary: '#212121',
-      secondary: '#91d2d9',
+      primary: '#1a1a1a',
+      secondary: '#4a4a4a',
     },
   },
   typography: {
